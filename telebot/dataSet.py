@@ -33,18 +33,3 @@ class Topics:
             writer.writerow(data)
 
 
-class Users:
-    def addUser(id):
-        data = [id]
-        with open("users.csv", "a", encoding="UTF8") as f:
-            writer = csv.writer(f)
-            writer.writerow(data)
-
-    def getUsers():
-        users = []
-        if os.path.exists("./users.csv"):
-            with open("./users.csv", "r") as file:
-                csvreader = csv.reader(file)
-                for row in csvreader:
-                    users.append(row[0])
-        return users
