@@ -9,7 +9,9 @@ from telebot import types
 
 
 load_dotenv()
-bot = telebot.TeleBot(os.environ.get("API_KEY"), parse_mode=None)
+print("loaded env variables, API_KEY: %s" %os.environ.get('API_KEY'))
+bot = telebot.TeleBot(os.environ["API_KEY"])
+
 
 
 
