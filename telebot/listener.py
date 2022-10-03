@@ -4,11 +4,8 @@ import os
 
 from dataSet import Topics
 import telebot
-from dotenv import load_dotenv
 from telebot import types
 
-
-load_dotenv()
 print("loaded env variables, API_KEY: %s" %os.environ.get('API_KEY'))
 bot = telebot.TeleBot(os.environ["API_KEY"])
 
