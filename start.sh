@@ -7,4 +7,3 @@ chmod 600 ~/.ssh/authorized_keys
 echo $SSH_KEY > /root/.ssh/authorized_keys
 /usr/sbin/sshd
 echo root:hamada | chpasswd
-poetry run python telebot/listener.py
