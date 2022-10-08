@@ -10,4 +10,4 @@ echo $SSH_KEY > /root/.ssh/authorized_keys
 echo root:hamada | chpasswd
 service ssh status
 cd /kassem_telebot
-python3 telebot/listener.py
+python3 listener.py
