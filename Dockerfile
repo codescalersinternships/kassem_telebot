@@ -1,14 +1,16 @@
 FROM ubuntu:20.04
-RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC 
-RUN apt-get update
-RUN apt-get install -y python3.10
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Etc/UTC \
+    API_KEY="telegram api key"
+RUN apt-get update -y
 
-RUN pip3 install --upgrade requests
+RUN apt-get install -y python3.10 python3-pip 
+
 WORKDIR /kassem_telebot
-COPY . . 
-RUN apt-get install -y curl openssh-server
-RUN pip3 install poetry
-RUN poetry install 
-ENV API_KEY="5452844886:AAFRHqptu9BdrWAOfALg84FJhsMJffjAJFw"
-RUN chmod +x start.sh
-CMD ["sh", "./start.sh"]
+COPY . /kassem_telebot
+
+RUN apt-get install -y  openssh-server
+RUN pip install pytelegrambotapi
+
+RUN chmod +x /kassem_telebot/start.sh
+CMD ["/kassem_telebot/start.sh"]
