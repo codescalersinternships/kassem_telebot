@@ -1,16 +1,18 @@
-FROM ubuntu:20.04
+FROM ubuntu
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Etc/UTC \
     API_KEY="telegram api key"
 RUN apt-get update -y
+RUN apt-get install -y wget python3.10 python3-pip 
+RUN wget https://github.com/threefoldtech/zinit/releases/download/v0.2.10/zinit -O /sbin/zinit &&\
+	chmod +x /sbin/zinit
 
-RUN apt-get install -y python3.10 python3-pip 
 
 WORKDIR /kassem_telebot
 COPY . /kassem_telebot
-
+ADD rootfs /
 RUN apt-get install -y  openssh-server
 RUN pip install pytelegrambotapi
 
-RUN chmod +x /kassem_telebot/start.sh
-CMD ["/kassem_telebot/start.sh"]
+
+CMD ["/sbin/zinit", "init", "--container"]
