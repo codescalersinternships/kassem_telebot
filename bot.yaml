@@ -1,0 +1,7 @@
+exec: /bin/sh -c "
+  echo 'telebot starting';
+  python3 /kassem_telebot/listener.py;
+  echo 'telebot started';"
+after:
+  -  ssh_config
+  -  sshd

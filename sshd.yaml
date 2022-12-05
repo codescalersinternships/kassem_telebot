@@ -1,0 +1,9 @@
+exec: /bin/sh -c "/usr/sbin/sshd; 
+      service ssh status;
+      touch k.txt"
+# test: /bin/sh -c "service ssh status"
+test: stat k.txt
+after: 
+  - ssh_config
+
+
